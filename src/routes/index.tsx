@@ -1,23 +1,56 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { Hero, Marquee } from "@/components/site/Hero";
+import { About } from "@/components/site/About";
+import { Services } from "@/components/site/Services";
+import { Portfolio } from "@/components/site/Portfolio";
+import { Booking } from "@/components/site/Booking";
+import { Contact } from "@/components/site/Contact";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { MobileBookingBar } from "@/components/site/MobileBookingBar";
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "Marcela Nail Designer — Unhas em gel, manutenção e cuticulagem";
+const description =
+  "Suas mãos. Sua assinatura. Aplicação de unha em gel, manutenção, banho em gel e cuticulagem com acabamento impecável. Agende seu horário.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { property: "og:locale", content: "pt_BR" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <a
+        href="#conteudo"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:bg-cream focus:px-4 focus:py-2 focus:text-ink"
+      >
+        Pular para o conteúdo
+      </a>
+      <SiteHeader />
+      <main id="conteudo">
+        <Hero />
+        <Marquee />
+        <About />
+        <Services />
+        <Portfolio />
+        <Booking />
+        <Contact />
+      </main>
+      <SiteFooter />
+      <MobileBookingBar />
+    </>
   );
 }
