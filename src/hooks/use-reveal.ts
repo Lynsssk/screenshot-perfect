@@ -7,14 +7,14 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>() {
     const el = ref.current;
     if (!el) return;
     if (!("IntersectionObserver" in window)) {
-      el.dataset.visible = "true";
+      el.dataset["visible"] = "true";
       return;
     }
     const io = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            (entry.target as HTMLElement).dataset.visible = "true";
+            (entry.target as HTMLElement).dataset["visible"] = "true";
             io.unobserve(entry.target);
           }
         }

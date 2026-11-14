@@ -16,8 +16,8 @@ function ContactCard({
   icon: ReactNode;
   label: string;
   value: string;
-  href?: string;
-  pending?: boolean;
+  href?: string | undefined;
+  pending?: boolean | undefined;
   delay: number;
 }) {
   const content = (

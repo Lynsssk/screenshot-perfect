@@ -17,6 +17,6 @@ describe("booking link", () => {
   it("opens WhatsApp with the default greeting once a number is set", () => {
     const url = getBookingUrl({ ...base, whatsappNumber: "+55 (81) 99999-0000" });
     expect(url.startsWith("https://wa.me/5581999990000?text=")).toBe(true);
-    expect(decodeURIComponent(url.split("text=")[1])).toBe(base.whatsappMessage);
+    expect(decodeURIComponent(url.split("text=")[1] ?? "")).toBe(base.whatsappMessage);
   });
 });

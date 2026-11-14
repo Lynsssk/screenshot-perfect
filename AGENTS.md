@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Editable business data (WhatsApp number, address, hours, prices) lives in `src/config/site.ts`; components read from it so the owner's details are changed in one place.
+- Booking links are built only by `getBookingUrl` in `src/lib/booking.ts` (WhatsApp when a number exists, Instagram otherwise) so every button stays consistent.
+- Portfolio images are listed in `src/components/site/portfolio-data.ts` with an `illustrative` flag, so real photos can replace demo ones without touching layout.
+- The landing page is a single route (`/`) with in-page anchors, because the brief explicitly asks for one scrolling page.
